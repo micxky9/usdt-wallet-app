@@ -1,4 +1,5 @@
 "use client";
+import "../styles/TokenInformation.css"
 import { useAccount, useReadContract } from "wagmi";
 import { ERC20_ABI, USDT_ADDRESS } from "@/lib/contract";
 import { formatUnits } from 'viem';
@@ -41,14 +42,42 @@ TokenInformation(){
 
 
     return (
-      <div>
-        <h2>Token Information</h2>
+      <div className="token-information">
+        <h2>
+          Token Information
+          {/* IMAGE HERE */}
+        </h2>
+        <div className="tokens">
+        <div className="token-cont">
+          {/* IMAGE HERE */}
+          <h4>Token Name</h4>
+          <p>Name: {tokenName?.toString()} </p>
+        </div>
 
-        <p>Name: {tokenName?.toString()} </p>
-        <p>Symbol: {tokenSymbol?.toString()} </p>
-        <p>Decimals: {tokenDecimals?.toString()} </p>
-        <p>Total Supply: {totalSupply?.toString()} </p>
-        <p>Balance: {formattedBalance} USDT</p>
+        <div className="token-cont">
+          {/* IMAGE HERE */}
+          <h4>Token Symbol</h4>
+          <p>Symbol: {tokenSymbol?.toString()} </p>
+        </div>
+
+        <div className="token-cont">
+          {/* IMAGE HERE */}
+          <h4>Token Decimals</h4>
+          <p>Decimals: {tokenDecimals?.toString()} </p>
+        </div>
+
+        <div className="token-cont">
+          {/* IMAGE HERE */}
+          <h4>Total Supply</h4>
+          <p>Total Supply: {totalSupply?.toString()} </p>
+        </div>
+
+        <div className="token-cont">
+          {/* IMAGE HERE */}
+          <h4>Balance</h4>
+          <p>Balance: {formattedBalance} USDT</p>
+        </div>
+        </div>
       </div>
     );
 

@@ -1,0 +1,43 @@
+.connect-meta-btn{
+    background: rgb(3, 180, 6);
+    padding: 0.6em 3em 0.5em 3em;
+    border-radius: 0.3em;
+    transition: 200ms ease-in-out;
+    color: white;
+}
+.connect-meta-btn:hover{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translateY(-7px);
+    background: rgb(4, 105, 6);
+    color: white;
+}
+
+.disconnect-btn{
+    background: rgb(19, 19, 19);
+    color: white;
+    padding: 0.6em 3em 0.5em 3em;
+    border-radius: 0.3em;
+    transition: 200ms ease-in-out;
+}
+.disconnect-btn:hover{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+.switchNet{
+    padding: 20px;
+    width: 100%;
+    background-color: orange;
+}
+.switch-net-btn{
+    color: orangered;
+    padding: 0.5em;
+    border: 2px solid rgb(207, 57, 2);
+}
