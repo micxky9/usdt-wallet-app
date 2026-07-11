@@ -5,12 +5,10 @@ import Header from "../components/Header";
 export default function Home() {
 
   return(
-      <main>
-         <h1>USDT WALLET </h1>
-         <br />
+      <div className="container">
          <Header/>
   <ConnectWallet/>
   <TokenInformation/>
-  </main>
+  </div>
   );
 }

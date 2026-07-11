@@ -17,6 +17,13 @@
     justify-content: space-around;
     align-items: center;
 }
+.token-information h2{
+    display: flex;
+    gap: 0.3em;
+}
+.token-cont svg{
+    margin-bottom: 17%;
+}
 .token-cont{
     padding: 10px 6em 10px 10px;
     border: 2px solid rgb(177, 175, 175);
