@@ -10,7 +10,7 @@
 }
 .connect-meta-btn{
     display: flex;
-    background: rgb(12, 133, 14);
+    background:#118f5d;
     padding: 0.2em 0em 0.2em 0em;
     border-radius: 0.3em;
     transition: 200ms ease-in-out;
