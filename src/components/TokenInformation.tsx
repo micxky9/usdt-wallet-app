@@ -42,9 +42,9 @@ const queryClient = useQueryClient();
   });
 useEffect(() => {
   if (isSuccess) {
-    refetchBalance();
+    setTimeout(() => {window.location.reload();}, 1000);
   }
-}, [isSuccess, refetchBalance]);
+}, [isSuccess]);
 
   const handleTransfer = async () => {
     if (!recipient || !amount) return;
@@ -228,7 +228,7 @@ useEffect(() => {
 
           <div className="token-cont" id="balance-disp-cont">
             <h4>Balance</h4>
-            <p>USDT Balance: {formattedBalance}</p>
+            <p>Balance: {formattedBalance} USDT</p>
           </div>
         </div>
       </div>

@@ -136,5 +136,10 @@ form{
     border-radius: 0.3em;
 }
 .transaction_status{
+    color: black;
+    font-size: small;
+}
+.error-message{
     color: red;
+    font-size: small;
 }
