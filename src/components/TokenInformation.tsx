@@ -11,12 +11,9 @@ import { useWriteContract } from "wagmi";
 export default function
 TokenInformation(){
   
-    
+    const [error, setError] = useState("");
     const { writeContract } = useWriteContract();
     const {address, isConnected} = useAccount();
-
-  
-   
     const [recipient, setRecipient] = useState("");
     const [amount, setAmount] = useState("");
      const { writeContractAsync } = useWriteContract();
