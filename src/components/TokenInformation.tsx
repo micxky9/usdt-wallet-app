@@ -262,7 +262,7 @@ useEffect(() => {
           <h2>Reciepient Address</h2>
           <input
             type="text"
-            placeholder="Recipient Address"
+            placeholder="0x..."
             value={recipient}
             onChange={(e) => setRecipient(e.target.value)}
           />
