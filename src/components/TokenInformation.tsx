@@ -31,7 +31,7 @@ export default function TokenInformation() {
   } = useWaitForTransactionReceipt({
     hash: txHash,
   });
-  const { data: balance, refetch: refetchBalance } = useReadContract({
+  const { data: balance, } = useReadContract({
     address: USDT_ADDRESS,
     abi: ERC20_ABI,
     functionName: "balanceOf",
@@ -354,7 +354,6 @@ useEffect(() => {
           </svg>
           Transfer
         </button>
-        
         {error && <p className="error-message">{error}</p>}
         <div className="transaction_status">
           {isPending && (
