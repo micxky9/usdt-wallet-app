@@ -1,5 +1,7 @@
 "use client";
 import "../styles/ConnectWallet.css";
+
+
 import {
   useAccount,
   useConnect,
@@ -40,7 +42,19 @@ export default function ConnectWallet() {
           )}
           <div className="connected-ui">
             <div className="online_connected"></div>
-            <p><span>Connected:</span> {address}</p>
+            <p id="connected_info">
+              <span>Connected:</span>
+
+              <span id="address">
+                <img
+                  src="images/01.png"
+                  alt="avatar"
+                  height={20}
+                  width={20}
+                />
+                {address}
+              </span>
+            </p>
           </div>
 
           <button className="disconnect-btn" onClick={() => disconnect()}>

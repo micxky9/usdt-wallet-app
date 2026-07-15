@@ -1,9 +1,12 @@
 "use client";
 import "../styles/TokenInformation.css"
+import { useState } from "react";
 import { useAccount, useReadContract } from "wagmi";
 import { ERC20_ABI, USDT_ADDRESS } from "@/lib/contract";
 import { formatUnits, parseUnits } from 'viem';
 import { useWriteContract } from "wagmi";
+
+
 
 export default function
 TokenInformation(){
@@ -12,29 +15,32 @@ TokenInformation(){
     const { writeContract } = useWriteContract();
     const {address, isConnected} = useAccount();
 
-   const handleMint = async () => {
-    console.log("clicked mint");
+  
 
-    if (!address){
-      console.log("no address");
-     return;
-    }
+    const [recipient, setRecipient] = useState("");
+    const [amount, setAmount] = useState("");
+     const { writeContractAsync } = useWriteContract();
+     
+const handleTransfer = async () => {
+  if(!recipient || !amount) return;
 
-   try{
-     await writeContract({
+  try{
+    const hash = await writeContractAsync({
       address: USDT_ADDRESS,
       abi: ERC20_ABI,
-      functionName: "mint",
-      args: [address!, parseUnits("1000", 6)],
+      functionName: "transfer",
+      args: [
+        recipient as `0x${string}`,
+        parseUnits(amount,
+          Number(tokenDecimals)),
+      ],
     });
-   }
-   catch(error){
-    console.error(error);
-   }
+    
+  }
+  catch(error){
+      console.error(error);
+    }
   };
-
-
-
     const { data: tokenName } = useReadContract({
         address: USDT_ADDRESS,
         abi: ERC20_ABI,
@@ -71,6 +77,7 @@ TokenInformation(){
         }
 
     return (
+      <>
       <div className="token-information">
         <h2>
           Token Information
@@ -162,26 +169,39 @@ TokenInformation(){
           </div>
 
           <div className="token-cont" id="balance-disp-cont">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M0 0h24v24H0z" fill="none" />
-              <path
-                fill="#000"
-                d="M16.747 12.16L12 15.24l-4.75-3.08L12 3.5zM12 16.23l-4.75-3.08L12 20.5l4.75-7.351z"
-                stroke-width="0.2"
-                stroke="#1739ea"
-              />
-            </svg>
-
             <h4>Balance</h4>
             <p>USDT Balance: {formattedBalance}</p>
           </div>
         </div>
       </div>
+
+      <form action="">
+ <input type="text"
+        placeholder="Recipient Address"
+        value={recipient}
+        onChange={(e) => 
+            setRecipient(e.target.value)} />
+
+            <input
+            type="number"
+            placeholder="Amount"
+            value={amount}
+            onChange={(e) => 
+                setAmount(e.target.value)}
+            />
+            <button
+            type="button"
+            onClick={() =>
+            setAmount(Number(formattedBalance).toFixed(2))}
+            >
+                Max
+            </button>
+
+            <button onClick={handleTransfer}>Transfer</button>
+
+
+      </form>
+      </>
     );
 
 

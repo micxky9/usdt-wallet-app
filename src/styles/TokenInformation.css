@@ -23,11 +23,16 @@
 #balance-disp-cont{
      display: flex;
     flex-direction: column;
-    gap: 1em;
-    padding: 1em 1em 1em 2em;
-    height: 27vh;
-    width: 30vw;
-    flex-wrap: wrap;
+    gap: 3em;
+    padding: 1em;
+    flex: 1 0 16%;
+    max-height: 26vh;
+    max-width: 30vw;
+    text-align: left;
+}
+#balance-disp-cont h4{
+    font-weight: 700;
+    font-size: x-large;
 }
 
 .token-information h2{

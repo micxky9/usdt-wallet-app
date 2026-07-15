@@ -89,3 +89,17 @@ svg{
     font-size: large;
     width: 24%;
 }
+#address{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-weight: 700;
+}
+
+#connected_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
