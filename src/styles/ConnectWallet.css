@@ -96,10 +96,16 @@ svg{
     align-items: center;
     color: #000;
     font-weight: 700;
+    gap: 0.4em;
 }
 
 #connected_info{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1em;
+}
+img{
+    border: 2px solid rgb(248, 240, 240);
+    border-radius: 100%;
 }

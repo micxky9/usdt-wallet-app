@@ -47,10 +47,11 @@ export default function ConnectWallet() {
 
               <span id="address">
                 <img
-                  src="images/01.png"
+                  src="https://api.dicebear.com/10.x/identicon/svg"
                   alt="avatar"
-                  height={20}
-                  width={20}
+                  height={40}
+                  width={40}
+                
                 />
                 {address}
               </span>
