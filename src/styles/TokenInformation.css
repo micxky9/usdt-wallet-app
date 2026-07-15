@@ -7,6 +7,7 @@
     margin: 1.3em;
     border-radius: 0.6em;
     box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 .token-information h2{
     font-size: x-large;
@@ -14,15 +15,28 @@
 .token-information .tokens{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    gap: 1em;
     align-items: center;
+    flex-wrap: wrap;
 }
+#balance-disp-cont{
+     display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em 1em 1em 2em;
+    height: 27vh;
+    width: 30vw;
+    flex-wrap: wrap;
+}
+
 .token-information h2{
     display: flex;
     gap: 0.3em;
 }
 .token-cont svg{
     margin-bottom: 17%;
+    flex-wrap: wrap;
 }
 .token-cont{
     padding: 10px 6em 10px 10px;
@@ -33,6 +47,7 @@
     align-items: flex-start;
     gap: 0.2em;
     transition: 200ms ease-in;
+    flex-wrap: wrap;
 }
 .token-cont:hover{
     transform: translateY(-4px);

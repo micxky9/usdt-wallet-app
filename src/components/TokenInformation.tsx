@@ -14,8 +14,7 @@ TokenInformation(){
 
    const handleMint = async () => {
     console.log("clicked mint");
-    console.log(writeContract);
-  
+
     if (!address){
       console.log("no address");
      return;
@@ -65,7 +64,7 @@ TokenInformation(){
          functionName: "balanceOf",
          args: [address!],
        });
-       const formattedBalance = balance && tokenDecimals !== undefined ? formatUnits(balance, Number(tokenDecimals)) : balance;
+       const formattedBalance = balance && tokenDecimals !== undefined ? formatUnits(balance, Number(tokenDecimals)) : "0";
        
        if (!isConnected || !address) {
           return null;
@@ -162,7 +161,7 @@ TokenInformation(){
             <p>Total Supply: {totalSupply?.toString().slice(1, 5)} </p>
           </div>
 
-          <div className="token-cont">
+          <div className="token-cont" id="balance-disp-cont">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -180,7 +179,6 @@ TokenInformation(){
 
             <h4>Balance</h4>
             <p>USDT Balance: {formattedBalance}</p>
-            <button onClick={handleMint}>Mint</button>
           </div>
         </div>
       </div>
