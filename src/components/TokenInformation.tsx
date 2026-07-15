@@ -42,7 +42,7 @@ const queryClient = useQueryClient();
   });
 useEffect(() => {
   if (isSuccess) {
-    setTimeout(() => {window.location.reload();}, 1000);
+    setTimeout(() => {window.location.reload();}, 100);
   }
 }, [isSuccess]);
 
@@ -50,26 +50,42 @@ useEffect(() => {
     if (!recipient || !amount) return;
     if (!recipient.trim()) {
       setError("Recipient address is required.");
+      setTimeout(() => {
+        setError("");
+      }, 1000);
+
       return;
     }
 
     if (!amount.trim()) {
       setError("Amount is required.");
+      setTimeout(() => {
+        setError("");
+      }, 1000);
       return;
     }
 
     if (!isAddress(recipient)) {
       setError("Invalid wallet address.");
+      setTimeout(() => {
+        setError("");
+      }, 1000);
       return;
     }
 
     if (Number(amount) <= 0) {
       setError("Amount must be greater than zero.");
+      setTimeout(() => {
+        setError("");
+      }, 1000);
       return;
     }
 
     if (Number(amount) > Number(formattedBalance)) {
       setError("Insufficient USDT balance.");
+      setTimeout(() => {
+        setError("");
+      }, 1000);
       return;
     }
 
@@ -330,11 +346,16 @@ useEffect(() => {
           </svg>
           Transfer
         </button>
+        
         {error && <p className="error-message">{error}</p>}
         <div className="transaction_status">
-          {isPending && <p>Transaction Pending....</p>}
-          {isSuccess && <p>Transaction Confirmed....</p>}
-          {isError && <p>Transaction Failed....</p>}
+          {isPending && (
+            <p style={{ color: "green" }}>Transaction Pending....</p>
+          )}
+          {isSuccess && (
+            <p style={{ color: "green" }}>Transaction Confirmed....</p>
+          )}
+          {isError && <p style={{ color: "red" }}>Transaction Failed....</p>}
         </div>
       </form>
     </>
