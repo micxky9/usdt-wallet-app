@@ -2,6 +2,7 @@
 import "../styles/TokenInformation.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   useAccount,
   useReadContract,
@@ -11,9 +12,9 @@ import { ERC20_ABI, USDT_ADDRESS } from "@/lib/contract";
 import { formatUnits, parseUnits } from "viem";
 import { useWriteContract } from "wagmi";
 import { isAddress } from "viem";
-import { useQueryClient } from "@tanstack/react-query";
 
 export default function TokenInformation() {
+  const queryClient = useQueryClient();
   const [error, setError] = useState("");
   const { address, isConnected } = useAccount();
   const [recipient, setRecipient] = useState("");
@@ -22,7 +23,6 @@ export default function TokenInformation() {
 
   const [txHash, setTxHash] = useState<`0x${string}` | undefined>();
 
-const queryClient = useQueryClient();
 
   const {
     isLoading: isPending,
@@ -40,11 +40,19 @@ const queryClient = useQueryClient();
       staleTime: 0,
     },
   });
+
+
 useEffect(() => {
-  if (isSuccess) {
-    setTimeout(() => {window.location.reload();}, 100);
-  }
-}, [isSuccess]);
+  if (!isSuccess) return;
+
+ Promise.all([
+    queryClient.invalidateQueries(),
+  ]).then(() => {
+    setRecipient("");
+    setAmount("");
+    setError("");
+  });
+}, [isSuccess, queryClient]);
 
   const handleTransfer = async () => {
     if (!recipient || !amount) return;
@@ -275,7 +283,7 @@ useEffect(() => {
               Max
             </button>
           </div>
-          <p>Available: {formattedBalance}</p>
+          <p className="ava">Available: {formattedBalance}</p>
         </div>
 
         <button onClick={handleTransfer} type="button" id="transfer__button">
@@ -357,6 +365,16 @@ useEffect(() => {
           )}
           {isError && <p style={{ color: "red" }}>Transaction Failed....</p>}
         </div>
+        {txHash && (
+          <p>
+            Transaction: {""}
+            <a style={{textDecoration: "underline", color: "blue"}} href="`https://sepolia.basescan.org/tx/${txHash}`"
+            target="_blank"
+            rel="noopener noreferrer">
+              {`${txHash.slice(0,6)}...${txHash.slice(-4)}`}
+            </a>
+          </p>
+        )}
       </form>
     </>
   );
