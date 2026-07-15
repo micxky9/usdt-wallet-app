@@ -50,3 +50,7 @@
     font-size: small;
     color: rgb(48, 47, 47);
 }
+button{
+    padding: 7px;
+    background-color: grey;
+}

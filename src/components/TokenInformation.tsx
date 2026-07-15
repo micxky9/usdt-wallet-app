@@ -2,11 +2,38 @@
 import "../styles/TokenInformation.css"
 import { useAccount, useReadContract } from "wagmi";
 import { ERC20_ABI, USDT_ADDRESS } from "@/lib/contract";
-import { formatUnits } from 'viem';
+import { formatUnits, parseUnits } from 'viem';
+import { useWriteContract } from "wagmi";
 
 export default function
 TokenInformation(){
-    const {address} = useAccount();
+  
+    
+    const { writeContract } = useWriteContract();
+    const {address, isConnected} = useAccount();
+
+   const handleMint = async () => {
+    console.log("clicked mint");
+    console.log(writeContract);
+  
+    if (!address){
+      console.log("no address");
+     return;
+    }
+
+   try{
+     await writeContract({
+      address: USDT_ADDRESS,
+      abi: ERC20_ABI,
+      functionName: "mint",
+      args: [address!, parseUnits("1000", 6)],
+    });
+   }
+   catch(error){
+    console.error(error);
+   }
+  };
+
 
 
     const { data: tokenName } = useReadContract({
@@ -38,8 +65,11 @@ TokenInformation(){
          functionName: "balanceOf",
          args: [address!],
        });
-       const formattedBalance = balance && tokenDecimals !== undefined ? formatUnits(balance, Number(tokenDecimals)) : "6";
-
+       const formattedBalance = balance && tokenDecimals !== undefined ? formatUnits(balance, Number(tokenDecimals)) : balance;
+       
+       if (!isConnected || !address) {
+          return null;
+        }
 
     return (
       <div className="token-information">
@@ -149,7 +179,8 @@ TokenInformation(){
             </svg>
 
             <h4>Balance</h4>
-            <p>Balance: {formattedBalance} USDT</p>
+            <p>USDT Balance: {formattedBalance}</p>
+            <button onClick={handleMint}>Mint</button>
           </div>
         </div>
       </div>
