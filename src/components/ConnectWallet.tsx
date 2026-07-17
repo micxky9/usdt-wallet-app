@@ -51,7 +51,6 @@ export default function ConnectWallet() {
                   alt="avatar"
                   height={40}
                   width={40}
-                
                 />
                 {address}
               </span>
