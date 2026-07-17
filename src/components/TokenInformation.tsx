@@ -228,8 +228,8 @@ useEffect(() => {
                     y2="23.477"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#ffcd0f" />
-                    <stop offset="1" stop-color="#fe8401" />
+                    <stop stopColor="#ffcd0f" />
+                    <stop offset="1" stopColor="#fe8401" />
                   </linearGradient>
                   <linearGradient
                     id="SVGYnStacUU"
@@ -239,8 +239,8 @@ useEffect(() => {
                     y2="18.405"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#4a4a4a" />
-                    <stop offset="1" stop-color="#212121" />
+                    <stop stopColor="#4a4a4a" />
+                    <stop offset="1" stopColor="#212121" />
                   </linearGradient>
                 </defs>
               </g>

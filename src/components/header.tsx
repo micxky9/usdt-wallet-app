@@ -5,7 +5,7 @@ export default function Header(){
         <div className="nav-info">
           <div className="usdt">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-              <g fill="none" fill-rule="evenodd">
+              <g fill="none" fillRule="evenodd">
                 <circle cx="16" cy="16" r="16" fill="#26A17B" />
                 <path
                   fill="#FFF"
@@ -17,7 +17,6 @@ export default function Header(){
           </div>
 
           <div className="divider">|</div>
-          
           <div className="base">Base Sepolia</div>
         </div>
       </nav>
